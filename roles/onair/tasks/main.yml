@@ -1,0 +1,33 @@
+---
+- name: install packages
+  become: yes
+  apt:
+    pkg:
+      - chromium
+      - barrier
+      - xinit
+      - x11vnc
+    state: latest
+- name: make raw user
+  user:
+    name: raw
+    shell: /bin/bash
+    state: present
+- name: copy xinitrc
+  template:
+    src: xinitrc.j2
+    dest: /home/raw/.xinitrc
+    owner: raw
+    mode: 0644
+- name: copy barrier conf
+  template:
+    src: barrier.conf.j2
+    dest: /home/raw/.barrier.conf
+    owner: raw
+    mode: 0644
+- name: copy bash_profile
+  copy:
+    src: bash_profile
+    dest: /home/raw/.bash_profile
+    owner: raw
+    mode: 0644

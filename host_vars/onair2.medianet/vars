@@ -1,0 +1,4 @@
+oap: oap2.medianet
+oap_to_onair: down
+onair_to_oap: up
+barrier_enabled: true

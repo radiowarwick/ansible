@@ -1,0 +1,15 @@
+#!/bin/sh
+xset -dpms
+xset s off
+xset s noblank
+
+while true; do
+	kill `pidof x11vnc`
+	x11vnc -shared -forever -viewonly &
+{% if barrier_enabled is defined and barrier_enabled %}
+	kill `pidof barriers`
+	barriers -f -c /home/raw/.barrier.conf &
+{% endif %}
+	chromium https://digiplay.radio.warwick.ac.uk/studio/{{ vault_digiplay_key }} --window-size=1024,768 --start-fullscreen --kiosk --incognito --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null
+done
+

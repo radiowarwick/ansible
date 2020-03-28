@@ -1,0 +1,10 @@
+---
+- hosts: onair:playout
+  roles:
+    - autologin_user
+- hosts: onair
+  roles:
+    - onair
+- hosts: all
+  roles:
+    - common

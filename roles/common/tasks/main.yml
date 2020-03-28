@@ -1,0 +1,12 @@
+---
+- name: installing common packages
+  apt:
+    pkg:
+      - vim
+      - git
+      - curl
+      - tmux
+      - dnsutils
+    state: latest
+  become: yes
+

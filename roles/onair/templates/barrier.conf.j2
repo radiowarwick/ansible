@@ -1,0 +1,10 @@
+section: screens
+	{{ oap }}:
+	{{ ansible_hostname }}:
+end
+section: links
+	{{ oap }}:
+		{{ oap_to_onair }} = {{ ansible_hostname }}
+	{{ ansible_hostname }}:
+		{{ onair_to_oap }} = {{ oap }}
+end
