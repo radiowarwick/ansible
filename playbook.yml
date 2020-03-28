@@ -1,5 +1,5 @@
 ---
-- hosts: onair:playout
+- hosts: playout
   roles:
     - autologin_user
 - hosts: onair
