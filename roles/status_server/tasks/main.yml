@@ -1,4 +1,8 @@
 ---
+- name: ensure pip is installed
+  apt:
+    name: python-pip
+    state: latest
 - name: ensure docker pip installed
   pip:
     name: docker
