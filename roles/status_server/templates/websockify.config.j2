@@ -1,0 +1,3 @@
+{% for server in status_server_websockify %}
+{{ server["token"] }}: {{ server["server"] }}:{{ server["port"] }}
+{% endfor %}

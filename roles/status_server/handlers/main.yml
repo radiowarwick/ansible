@@ -1,0 +1,5 @@
+---
+- name: restart websockify
+  service:
+    name: websockify
+    state: restarted
