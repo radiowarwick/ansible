@@ -14,7 +14,7 @@
 - name: ensure modular-status container is running
   docker_container:
     name: modular_status
-    image: "raw1251am/modular_status:latest"
+    image: "raw1251am/modular-status:latest"
     state: started
     env_file: /etc/modular_status.env
     restart_policy: always
