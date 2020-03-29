@@ -1,0 +1,4 @@
+---
+roles:
+  - name: gerrlingguy.docker
+    version: 2.7.0

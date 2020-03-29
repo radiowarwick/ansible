@@ -1,0 +1,14 @@
+---
+- name: ensure modular-stauts env file exists
+  template:
+    src: modular_status.env.j2
+    dest: /etc/modular_status.env
+- name: ensure modular-status container is running
+  docker_container:
+    name: modular_status
+    image: "raw1251am/modular_status:latest"
+    state: started
+    env_file: /etc/modular_status.env
+    restart_policy: always
+    exposed_ports:
+      - 8080
