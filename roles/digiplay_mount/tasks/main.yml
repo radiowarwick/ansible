@@ -7,6 +7,6 @@ name: ensure dps0 is mounted
 mount:
   path: /mnt/dps0-0
   src: dps0.medianet:/export/dps0-0
-  opts: {{ digiplay_mount_options }}
+  opts: "{{ digiplay_mount_options }}"
   fstype: nfs
   state: mounted
