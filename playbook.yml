@@ -5,6 +5,9 @@
 - hosts: onair
   roles:
     - onair
+- hosts: playout:digiplay2.medianet:fs0.medianet:raw.medianet
+  roles:
+    - digiplay_mount
 - hosts: all
   roles:
     - common
