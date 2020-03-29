@@ -1,8 +1,14 @@
 # Digiplay Mount
 
-The `digiplay_mount` role sets up the NFS mount of the music file shares that are exported on `dps0.medianet`.
+The role sets up an NFS mount of the music file share that are exported on `dps0.medianet`.
 
-## Variables
+## Role Variables
 
-`digiplay_mount_options` specifies the mount options, by default this is `ro,defaults`
-`digiplay_mount_dest` speicifies the mount destination path, by default this is `/mnt/dps0-0`
+Variable | Required | Default | Choices | Comments
+--- | --- | --- | --- | --- |
+digiplay_mount_options | no | ro,defaults | any fstab options | see `man fstab`
+digiplay_mount_dest    | no | /mnt/dps0-0 | any valid path | destination of the mount
+
+## Dependencies
+
+None
