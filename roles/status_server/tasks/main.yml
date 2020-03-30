@@ -20,19 +20,17 @@
     restart_policy: always
     published_ports:
       - "8080:8080"
-- name: ensure websockify installed
-  apt:
-    name: websockify
-    state: latest
-  notify: 
-  - restart websockify
-- name: ensure websockify enabled
-  systemd:
-    enabled: yes
-    name: websockify
 - name: ensure websockify config updated
   template:
     src: websockify.config.j2
-    dest: /etc/websockify.config.d/config
-  notify:
-  - restart websockify
+    dest: /etc/websockify.config
+- name: ensure websockify container started
+  docker_container:
+    name: websockify
+    image: "efrecon/websockify:latest"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3000:80"
+    volumes:
+      - /etc/websockify.conf:/opt/websockify/config
