@@ -28,6 +28,7 @@
   docker_container:
     name: websockify
     image: "efrecon/websockify:latest"
+    command: ["80", "--token-plugin", "TokenFile", "--token-source", "/opt/websockify/config"]
     state: started
     restart_policy: always
     published_ports:
