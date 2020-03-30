@@ -1,4 +1,4 @@
 ---
 roles:
-  - name: gerrlingguy.docker
+  - name: geerlingguy.docker
     version: 2.7.0
