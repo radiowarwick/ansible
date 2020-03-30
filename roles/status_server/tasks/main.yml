@@ -34,4 +34,4 @@
     published_ports:
       - "3000:80"
     volumes:
-      - /etc/websockify.conf:/opt/websockify/config
+      - /etc/websockify.config:/opt/websockify/config
