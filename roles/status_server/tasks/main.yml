@@ -7,31 +7,27 @@
   pip:
     name: docker
     state: latest
+
 - name: ensure modular-status env file exists
   template:
     src: modular_status.env.j2
     dest: /etc/modular_status.env
-- name: ensure modular-status container is running
-  docker_container:
-    name: modular_status
-    image: "raw1251am/modular-status:latest"
-    state: started
-    env_file: /etc/modular_status.env
-    restart_policy: always
-    published_ports:
-      - "8080:8080"
+    notify: start modular-status container
+- name: ensure modular-status image is latest
+  docker_image:
+    name: "raw1251am/modular-status:latest"
+    source: pull
+    force_source: yes
+  notify: start modular-status container
+
 - name: ensure websockify config updated
   template:
     src: websockify.config.j2
     dest: /etc/websockify.config
-- name: ensure websockify container started
-  docker_container:
-    name: websockify
-    image: "efrecon/websockify:latest"
-    command: ["80", "--token-plugin", "TokenFile", "--token-source", "/opt/websockify/config"]
-    state: started
-    restart_policy: always
-    published_ports:
-      - "3000:80"
-    volumes:
-      - /etc/websockify.config:/opt/websockify/config
+  notify: start websockify container
+- name: ensure websockify image is latest
+  docker_image:
+    name: "efrecon/websockify:latest"
+    source: pull
+    force_source: yes
+  notify: start websockify container

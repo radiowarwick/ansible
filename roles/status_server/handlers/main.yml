@@ -1,0 +1,20 @@
+- name: start modular-status container
+  docker_container:
+    name: modular_status
+    image: "raw1251am/modular-status:latest"
+    state: started
+    env_file: /etc/modular_status.env
+    restart_policy: always
+    published_ports:
+      - "8080:8080"
+- name: start websockify container
+  docker_container:
+    name: websockify
+    image: "efrecon/websockify:latest"
+    command: ["80", "--token-plugin", "TokenFile", "--token-source", "/opt/websockify/config"]
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3000:80"
+    volumes:
+      - /etc/websockify.config:/opt/websockify/config
