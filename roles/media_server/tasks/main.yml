@@ -1,0 +1,26 @@
+---
+- name: ensure pip is installed
+  apt:
+    name: python-pip
+    state: latest
+- name: ensure docker pip installed
+  pip:
+    name: docker
+    state: latest
+
+- name: ensure static media directory exists
+  file:
+    path: /var/www/media-server/media/static
+    state: directory
+
+- name: ensure media-server env file exists
+  template:
+    src: media_server.env.j2
+    dest: /etc/media-server.env
+  notify: start media-server container
+- name: ensure media-server image is latest
+  docker_image:
+    name: "raw1251am/media-server:latest"
+    source: pull
+    force_source: yes
+  notify: start media-server container

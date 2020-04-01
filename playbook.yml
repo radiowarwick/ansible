@@ -11,6 +11,9 @@
 - hosts: modular_status
   roles:
     - status_server
+- hosts: media
+  roles:
+    - media_server
 - hosts: all
   roles:
     - common
