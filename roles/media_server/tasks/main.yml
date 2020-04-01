@@ -12,7 +12,7 @@
   file:
     path: /var/media/static
     state: directory
-
+  notify: start media-server container
 - name: ensure media-server env file exists
   template:
     src: media_server.env.j2
