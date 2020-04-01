@@ -10,7 +10,7 @@
 
 - name: ensure static media directory exists
   file:
-    path: /var/www/media-server/media/static
+    path: /var/media/static
     state: directory
 
 - name: ensure media-server env file exists
