@@ -1,2 +1,2 @@
-graphql_host: https://graphql.radio.warwick.ac.uk/graphql
+website_server_graphql_host: https://graphql.radio.warwick.ac.uk/graphql
 docker_install_compose: true
