@@ -14,6 +14,9 @@
 - hosts: media
   roles:
     - media_server
+- hosts: website
+  roles:
+    - website_server
 - hosts: all
   roles:
     - common
