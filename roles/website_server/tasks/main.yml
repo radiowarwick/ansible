@@ -16,14 +16,14 @@
   template:
     src: pages.conf.j2
     dest: /website/pages.conf
-  noitfy: start website docker compose 
+  notify: start website docker compose 
 - name: ensure /website/plumbus.conf environment file exists
   template:
     src: plumbus.conf.j2
     dest: /website/plumbus.conf
-  noitfy: start website docker compose 
+  notify: start website docker compose 
 - name: ensure /website/docker-compose.yml is in place
   copy:
     src: docker-compose.yml
     dest: /website/docker-compose.yml
-  noitfy: start website docker compose 
+  notify: start website docker compose 
