@@ -1,0 +1,22 @@
+version: "3"
+services:
+  pages:
+    image: registry.gitlab.com/radiowarwick/raw-pages:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - PLUMBUS_URL=http://plumbus:3000
+    env_file: /website/pages.conf
+    depends_on: 
+      - plumbus
+  plumbus:
+    image: registry.gitlab.com/radiowarwick/plumbus:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_HOST=redis
+    env_file: /website/plumbus.conf
+    depends_on:
+      - redis
+  redis:
+    image: redis:alpine

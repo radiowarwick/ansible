@@ -1,0 +1,5 @@
+---
+- name: start website docker compose
+  docker_compose:
+    project_src: /website
+    pull: yes 
