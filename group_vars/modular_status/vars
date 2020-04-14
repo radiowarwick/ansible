@@ -1,0 +1,14 @@
+---
+status_server_websockify:
+  - server: onair1.medianet
+    port: 5900
+    token: onair1
+  - server: onair2.medianet
+    port: 5900
+    token: onair2
+  - server: playout1.medianet
+    port: 5900
+    token: playout1
+  - server: playout2.medianet
+    port: 5900
+    token: playout2

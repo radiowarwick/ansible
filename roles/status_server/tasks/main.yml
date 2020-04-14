@@ -1,0 +1,33 @@
+---
+- name: ensure pip is installed
+  apt:
+    name: python-pip
+    state: latest
+- name: ensure docker pip installed
+  pip:
+    name: docker
+    state: latest
+
+- name: ensure modular-status env file exists
+  template:
+    src: modular_status.env.j2
+    dest: /etc/modular_status.env
+    notify: start modular-status container
+- name: ensure modular-status image is latest
+  docker_image:
+    name: "raw1251am/modular-status:latest"
+    source: pull
+    force_source: yes
+  notify: start modular-status container
+
+- name: ensure websockify config updated
+  template:
+    src: websockify.config.j2
+    dest: /etc/websockify.config
+  notify: start websockify container
+- name: ensure websockify image is latest
+  docker_image:
+    name: "efrecon/websockify:latest"
+    source: pull
+    force_source: yes
+  notify: start websockify container

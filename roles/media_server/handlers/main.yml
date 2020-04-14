@@ -1,0 +1,11 @@
+- name: start media-server container
+  docker_container:
+    name: media
+    image: "raw1251am/media-server:latest"
+    state: started
+    env_file: /etc/media-server.env
+    restart_policy: always
+    published_ports:
+      - "8080:8080"
+    mounts:
+      - "type=bind,source=/var/media/static,target=/www/media/static"

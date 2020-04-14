@@ -1,0 +1,29 @@
+---
+- name: ensure pip is installed
+  apt:
+    name: python-pip
+    state: latest
+- name: ensure docker pip installed
+  pip:
+    name: docker
+    state: latest
+
+- name: ensure /website exists
+  file:
+    path: /website
+    state: directory
+- name: ensure /website/pages.conf environment file exists
+  template:
+    src: pages.conf.j2
+    dest: /website/pages.conf
+  notify: start website docker compose 
+- name: ensure /website/plumbus.conf environment file exists
+  template:
+    src: plumbus.conf.j2
+    dest: /website/plumbus.conf
+  notify: start website docker compose 
+- name: ensure /website/docker-compose.yml is in place
+  copy:
+    src: docker-compose.yml
+    dest: /website/docker-compose.yml
+  notify: start website docker compose 

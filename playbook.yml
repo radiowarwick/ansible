@@ -5,6 +5,18 @@
 - hosts: onair
   roles:
     - onair
+- hosts: playout:digiplay2.medianet:fs0.medianet:raw.medianet
+  roles:
+    - digiplay_mount
+- hosts: modular_status
+  roles:
+    - status_server
+- hosts: media
+  roles:
+    - media_server
+- hosts: website
+  roles:
+    - website_server
 - hosts: all
   roles:
     - common

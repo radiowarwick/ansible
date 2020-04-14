@@ -1,0 +1,12 @@
+---
+- name: ensure nfs-common is installed
+  apt:
+    name: nfs-common
+    state: latest
+- name: ensure dps0 is mounted
+  mount:
+    path: "{{ digiplay_mount_dest }}"
+    src: dps0.medianet:/export/dps0-0
+    opts: "{{ digiplay_mount_options }}"
+    fstype: nfs
+    state: mounted

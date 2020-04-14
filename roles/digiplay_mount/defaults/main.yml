@@ -1,0 +1,2 @@
+digiplay_mount_options: ro,defaults
+digiplay_mount_dest: /mnt/dps0-0
